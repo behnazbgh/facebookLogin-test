@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 import java.util.concurrent.TimeUnit;
 
@@ -17,11 +18,16 @@ public class App
         System.out.println( "Hello World!" );
 
         //Initialize the web driver
-        System.setProperty("webdriver.chrome.driver", "/Users/behnaz/Documents/chromedriver-mac-arm64/chromedriver");
+        //System.setProperty("webdriver.chrome.driver", "/Users/behnaz/Documents/chromedriver-mac-arm64/chromedriver");
+
+        //initializing the driver inside pom file
+        WebDriverManager.chromedriver().setup();
 
         ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
         WebDriver driver = new ChromeDriver(chromeOptions);
         //Open browser and navigate to the APP page we want to test
+        System.out.println("script executing");
         driver.get("https://www.facebook.com/login/");
 
         //enable wait for 2s
@@ -34,6 +40,7 @@ public class App
         driver.findElement(By.id("loginbutton")).click();
         Thread.sleep(1000);
         driver.quit();
+        System.out.println("script executed successfully");
 
     }
 }
