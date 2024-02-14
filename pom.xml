@@ -40,7 +40,7 @@
           <configuration>
             <archive>
               <manifest>
-                <mainClass>com.selenium.test.App</mainClass>
+                <mainClass>com.facebookLogin.App</mainClass>
               </manifest>
             </archive>
             <descriptorRefs>
